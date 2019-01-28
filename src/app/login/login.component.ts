@@ -3,6 +3,7 @@ import {NgForm} from '@angular/forms';
 import {LoginService} from '../login.service';
 import {parseHttpResponse} from 'selenium-webdriver/http';
 import {ɵResourceLoaderImpl} from '@angular/platform-browser-dynamic';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +12,7 @@ import {ɵResourceLoaderImpl} from '@angular/platform-browser-dynamic';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private loginService: LoginService) { }
+  constructor(private loginService: LoginService, private route: Router ) { }
 
   ngOnInit() {
   }
@@ -20,6 +21,8 @@ export class LoginComponent implements OnInit {
         (response) => {
           console.log(response);
           localStorage.setItem('token', response['id']);
+          const link = [''];
+          this.route.navigate(link);
         },
         (error) => {
           console.log(error);

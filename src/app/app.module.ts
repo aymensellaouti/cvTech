@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {RouterModule, Route} from '@angular/router';
 
 import { AppComponent } from './app.component';
@@ -24,6 +24,7 @@ import {CvRouting} from './cvPersonne/cv.routing';
 import { LoginComponent } from './login/login.component';
 import {LoginService} from './login.service';
 import {Comp2Component} from './comp2/comp2.component';
+import {AuthentificationInterceptor, AuthentificationInterceptorProvider} from './interceptors/authentification.interceptor';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,7 @@ import {Comp2Component} from './comp2/comp2.component';
     TestDirectiveComponent,
     TodoComponent,
     HeaderComponent,
-    LoginComponent
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -53,7 +54,8 @@ import {Comp2Component} from './comp2/comp2.component';
   providers: [
     TodoService,
     CvService,
-    LoginService
+    LoginService,
+    AuthentificationInterceptorProvider
   ],
   bootstrap: [AppComponent],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]

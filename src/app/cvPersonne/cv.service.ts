@@ -38,9 +38,13 @@ export class CvService  {
     ];
   }
   addPersonne(personne: Personne) {
+    const token = localStorage.getItem('token');
     const params = new HttpParams()
       .set('access_token', localStorage.getItem('token'));
-    return this.http.post(this.apiUrl, personne, {params});
+    const headers = new HttpHeaders();
+    // headers.append('Authorization', 'Bearer ${token}');
+    // return this.http.post(this.apiUrl, personne, {headers});
+    return this.http.post(this.apiUrl, personne);
   }
   saveCvs() {
     console.log('save Cvs');
@@ -53,17 +57,8 @@ export class CvService  {
      // const filter = {name: name};
      const filter = (`{"where":{"name":{"like":"%${name}%"}}}`);
      const params = new HttpParams()
-      .set('filter', filter);
-     console.log(filter);
-   //  params.set('filter', `{"name" : "${name}"}`);
-     // const httpOptions = {
-     //   headers: new HttpHeaders({
-     //     'Content-Type':  'application/json'
-     //   }),
-     //   params : params
-     // };
-     //  ?filter=${filter}
-    return this.http.get<Personne[]>(`${this.apiUrl}`, {params}).pipe(
+                    .set('filter', filter);
+     return this.http.get<Personne[]>(`${this.apiUrl}`, {params}).pipe(
       throttleTime(4000),
       distinctUntilChanged()
     );

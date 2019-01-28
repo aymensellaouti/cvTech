@@ -8,7 +8,6 @@ import { ItemComponent } from './item/item.component';
 import {CvService} from './cv.service';
 import {CvCardComponent} from './cv-card/cv-card.component';
 import { FormPersonneComponent } from './form-personne/form-personne.component';
-import { LogoutComponent } from '../logout/logout.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +16,6 @@ import { LogoutComponent } from '../logout/logout.component';
     ListComponent,
     ItemComponent,
     FormPersonneComponent,
-    LogoutComponent,
   ],
   imports: [
     CommonModule,

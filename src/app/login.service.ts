@@ -14,4 +14,10 @@ export class LoginService {
       console.log(this.credenitals);
       return this.http.post(this.apiUrl, this.credenitals);
   }
+  logout() {
+    localStorage.removeItem('token');
+  }
+  isLoggedIn() {
+    return localStorage.getItem('token');
+  }
 }
