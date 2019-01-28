@@ -1,0 +1,14 @@
+<hr>
+<p>
+  color works!
+</p>
+<hr>
+
+<div [style.background-color]="color" >
+  Bonjour
+</div>
+<app-lampe [color]="'red'"></app-lampe>
+
+<input type="text" #macouleur (change)="changerCouleur(macouleur.value)">
+
+<input type="button" value="reset" (click)="resetColor()">

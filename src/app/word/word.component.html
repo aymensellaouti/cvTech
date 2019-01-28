@@ -1,0 +1,17 @@
+<hr>
+<input class="form-control" type="text" [(ngModel)]="couleur" ><br>
+<input class="form-control" #taille type="number" (change)="changeSize(taille.value)"><br>
+<select name="police" #mapolice id="police" class="form-control" (select)="changeFont(mapolice.value)">
+  <option>"Times New Roman"</option>
+  <option>Garamond</option>
+  <option>Verdana</option>
+</select>
+<hr>
+
+<p [ngStyle]="{
+    'color': couleur,
+    'font-family':font,
+    'font-size':size
+    }">
+  Contenu du paragraphe
+</p>

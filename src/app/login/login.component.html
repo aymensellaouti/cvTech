@@ -1,0 +1,15 @@
+<div class="row">
+  <form #formulaire="ngForm" (ngSubmit)="login(formulaire)">
+    <div class="form-group">
+      <label for="email" >Login</label>
+      <input type="email" class="form-control" name="email" id="email" ngModel>
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" name="password" class="form-control" id="password" ngModel>
+    </div>
+    <input type="submit" class="btn btn-primary">
+
+  </form>
+
+</div>

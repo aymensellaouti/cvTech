@@ -1,0 +1,14 @@
+
+<button class="btn btn-primary" (click)="addVisible()"> Ajouter </button>
+
+<ol class="list-group">
+  <li *ngFor="let todo of todos" class="list-group-item">
+    {{todo.title}} : {{todo.description}} <button class="btn btn-danger" (click)="deleteTodo(todo)">Delete </button>
+  </li>
+</ol>
+
+<div *ngIf="add">
+  Title : <input [(ngModel)]="titre" type="text" class="form-control">
+  Description : <input [(ngModel)]="description" type="text" class="form-control">
+  <button (click)="addTodo()" class="btn btn-info">Ajouter Todo</button>
+</div>

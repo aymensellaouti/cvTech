@@ -1,0 +1,15 @@
+div{
+  width: 150px;
+  height: 150px;
+  border: black 2px solid;
+}
+
+.white{
+  color: black;
+  background-color: white;
+}
+
+.black{
+  color: white;
+  background-color: black;
+}

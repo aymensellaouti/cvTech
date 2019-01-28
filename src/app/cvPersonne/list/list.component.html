@@ -1,0 +1,5 @@
+<ul class="list-group">
+  <app-item *ngFor="let myPersonne of personnes" (selectItem)="selectPersonne($event)"  [personne]="myPersonne"></app-item>
+</ul>
+
+
