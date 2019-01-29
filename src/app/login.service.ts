@@ -17,6 +17,9 @@ export class LoginService {
   logout() {
     localStorage.removeItem('token');
   }
+  getToken() {
+    return localStorage.getItem('token');
+  }
   isLoggedIn() {
     return localStorage.getItem('token');
   }

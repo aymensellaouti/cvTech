@@ -4,6 +4,7 @@ import {LoginService} from '../login.service';
 import {parseHttpResponse} from 'selenium-webdriver/http';
 import {ɵResourceLoaderImpl} from '@angular/platform-browser-dynamic';
 import {Router} from '@angular/router';
+import {HttpErrorResponse} from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +12,7 @@ import {Router} from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
+  errorMessage = '';
   constructor(private loginService: LoginService, private route: Router ) { }
 
   ngOnInit() {
@@ -19,13 +20,17 @@ export class LoginComponent implements OnInit {
   login(formulaire: NgForm) {
       this.loginService.login(formulaire.value.email, formulaire.value.password ).subscribe(
         (response) => {
-          console.log(response);
           localStorage.setItem('token', response['id']);
           const link = [''];
+          this.errorMessage = '';
           this.route.navigate(link);
         },
-        (error) => {
-          console.log(error);
+        (error: HttpErrorResponse) => {
+          if (error.status === 401) {
+            this.errorMessage = 'Login ou mot de passe invalides';
+          } else {
+            this.errorMessage = 'Erreur de connexion, veuillez contacter l\'administrateur';
+          }
         }
       );
   }

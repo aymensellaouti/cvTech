@@ -25,6 +25,8 @@ import { LoginComponent } from './login/login.component';
 import {LoginService} from './login.service';
 import {Comp2Component} from './comp2/comp2.component';
 import {AuthentificationInterceptor, AuthentificationInterceptorProvider} from './interceptors/authentification.interceptor';
+import {ErrorInterceptor, ErrorInterceptorProvider} from './interceptors/error-interceptor.service';
+import { ErrorPageComponent } from './error-page/error-page.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +43,7 @@ import {AuthentificationInterceptor, AuthentificationInterceptorProvider} from '
     TodoComponent,
     HeaderComponent,
     LoginComponent,
+    ErrorPageComponent,
   ],
   imports: [
     BrowserModule,
@@ -55,7 +58,9 @@ import {AuthentificationInterceptor, AuthentificationInterceptorProvider} from '
     TodoService,
     CvService,
     LoginService,
+    ErrorInterceptorProvider,
     AuthentificationInterceptorProvider
+
   ],
   bootstrap: [AppComponent],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]

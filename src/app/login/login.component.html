@@ -1,4 +1,7 @@
 <div class="row">
+  <div *ngIf="errorMessage" class="alert alert-danger">
+    {{errorMessage}}
+  </div>
   <form #formulaire="ngForm" (ngSubmit)="login(formulaire)">
     <div class="form-group">
       <label for="email" >Login</label>
