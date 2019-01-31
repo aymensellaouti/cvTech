@@ -1,0 +1,10 @@
+<div *ngIf="personne">
+  <app-cv-card [selectedPersonne]="personne">
+
+  </app-cv-card>
+</div>
+
+<div *ngIf="!personne">
+  Personne innexistante
+</div>
+

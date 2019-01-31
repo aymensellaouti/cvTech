@@ -38,10 +38,10 @@ export class CvService  {
     ];
   }
   addPersonne(personne: Personne) {
-    const token = localStorage.getItem('token');
-    const params = new HttpParams()
-      .set('access_token', localStorage.getItem('token'));
-    const headers = new HttpHeaders();
+    // const token = localStorage.getItem('token');
+    // const params = new HttpParams()
+    //   .set('access_token', localStorage.getItem('token'));
+    // const headers = new HttpHeaders();
     // headers.append('Authorization', 'Bearer ${token}');
     // return this.http.post(this.apiUrl, personne, {headers});
     return this.http.post(this.apiUrl, personne);
@@ -50,7 +50,7 @@ export class CvService  {
     console.log('save Cvs');
     return this.http.put(this.apiUrl, this.personnes);
   }
-   searchPersonnes(name: string): Observable<Personne[]> {
+    searchPersonnes(name: string): Observable<Personne[]> {
     if (!name.trim()) {
       return of([]);
     }
@@ -62,5 +62,8 @@ export class CvService  {
       throttleTime(4000),
       distinctUntilChanged()
     );
+   }
+   getPersonne(id): Observable<Personne> {
+     return this.http.get<Personne>(this.apiUrl + `/${id}`);
    }
 }

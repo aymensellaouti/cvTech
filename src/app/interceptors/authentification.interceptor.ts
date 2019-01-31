@@ -11,7 +11,9 @@ export class AuthentificationInterceptor implements HttpInterceptor {
     console.log('intercept');
     if (token)  {
       const newReq = req.clone({
-        headers: new HttpHeaders().set('Authorization', 'Bearer ${token}')
+        headers: new HttpHeaders().append('Authorization', `Bearer ${token}`)
+          .append('as', 'test1')
+          .append('as2', 'test2')
       });
     return next.handle(newReq);
     }

@@ -19,6 +19,15 @@ export class ErrorInterceptor implements HttpInterceptor {
                 observer.error(err);
             });
           })
+        ,
+        //   tap(
+        //     (incoming: any) => {
+        //     console.log('here its ok');
+        //     },
+        //     (error: HttpErrorResponse) => {
+        //       return throwError(error);
+        //     }
+        // )
       );
   }
 }

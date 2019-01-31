@@ -5,6 +5,7 @@ import {parseHttpResponse} from 'selenium-webdriver/http';
 import {ɵResourceLoaderImpl} from '@angular/platform-browser-dynamic';
 import {Router} from '@angular/router';
 import {HttpErrorResponse} from '@angular/common/http';
+import {Personne} from '../cvPersonne/Personne';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +19,8 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
   login(formulaire: NgForm) {
-      this.loginService.login(formulaire.value.email, formulaire.value.password ).subscribe(
+      const credentials = <Personne> formulaire.value.user;
+    this.loginService.login(credentials).subscribe(
         (response) => {
           localStorage.setItem('token', response['id']);
           const link = [''];
@@ -33,6 +35,9 @@ export class LoginComponent implements OnInit {
           }
         }
       );
+  }
+  showInput(input) {
+    console.log(input);
   }
 
 }

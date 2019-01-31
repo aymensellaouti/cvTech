@@ -14,9 +14,9 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><a [routerLink]="['']" > Cvs <span class="sr-only">(current)</span></a></li>
-        <li class="active"><a [routerLink]="['lampe']" > Lampe <span class="sr-only">(current)</span></a></li>
-        <li class="active"><a [routerLink]="['addPersonne']" > Add Personne <span class="sr-only">(current)</span></a></li>
+        <li class="active"><a [routerLink]="['cv']" > Cvs <span class="sr-only">(current)</span></a></li>
+        <li class="active"><a [routerLink]="['lampe']" [queryParams]="{qpVar:'je suis un qp bindé avec le routerLink'}"> Lampe <span class="sr-only">(current)</span></a></li>
+        <li class="active"><a [routerLink]="['cv/addPersonne']" > Add Personne <span class="sr-only">(current)</span></a></li>
 
         <li *ngIf = "! loginService.isLoggedIn()" class="active"><a [routerLink]="['login']" > Login <span class="sr-only">(current)</span></a></li>
         <li *ngIf = " loginService.isLoggedIn()" class="active"><a (click)="logout()" > Logout <span class="sr-only">(current)</span></a></li>
@@ -40,7 +40,16 @@
 </nav>
 <div class="row">
   <div class="form-group">
-    <input type="text" #serachText (keyup)="serachPersonnes(serachText.value)" class="form-control" placeholder="Search">
+    <input type="text" #serachText
+           (keyup)="serachPersonnes(serachText.value)"
+           class="form-control"
+           placeholder="Search"
+    >
   </div>
-  <div class="searchChoice alert" *ngFor="let search of liveSearch">{{search.name}} {{search.firstname}}</div>
+  <div class="searchChoice alert"
+       *ngFor="let search of liveSearch">
+    <div (click)="goToDetails(search.id, serachText)" class="alert alert-info">
+      {{search.name}} {{search.firstname}}
+    </div>
+  </div>
 </div>

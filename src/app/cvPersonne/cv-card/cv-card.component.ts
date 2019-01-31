@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Personne} from "../Personne";
+import {Personne} from '../Personne';
 
 @Component({
   selector: 'app-cv-card',
@@ -8,7 +8,7 @@ import {Personne} from "../Personne";
 })
 export class CvCardComponent implements OnInit {
 
-  @Input() selectedPersonne : Personne;
+  @Input() selectedPersonne: Personne;
   constructor() { }
 
   ngOnInit() {

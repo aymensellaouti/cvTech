@@ -1,0 +1,13 @@
+<div class="row" *ngIf="personne">
+  <form #formulaire = "ngForm">
+    Cin <input type="number" [(ngModel)]="personne.cin" name="cin" class="form-control">
+    Name <input [(ngModel)]="personne.name"type="text" name="name" class="form-control">
+    Firstname <input type="text" [(ngModel)]="personne.firstname" name="firstname" class="form-control">
+    Age <input type="number" [(ngModel)]="personne.age" name="age" class="form-control">
+    Job <input type="text" [(ngModel)]="personne.job" name="job" class="form-control">
+    Path <input type="text" [(ngModel)]="personne.path" name="path" class="form-control">
+    <button  (click)="onSubmit(formulaire)" class="btn btn-primary">
+      Save
+    </button>
+  </form>
+</div>

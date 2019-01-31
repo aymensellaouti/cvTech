@@ -1,4 +1,5 @@
-<p appHighlight *ngIf="visible">
+<p appHighlight [bgColorIn]="'blue'" [bgColorOut]="'pink'" *ngIf="visible">
   test-directive works!
 </p>
+<input appRainbow>
 <button (click)="changeVisibility()">Afficher/cacher</button>

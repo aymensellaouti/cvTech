@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {CvService} from '../cvPersonne/cv.service';
 import {Personne} from '../cvPersonne/Personne';
 import {LoginService} from '../login.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -11,7 +12,9 @@ import {LoginService} from '../login.service';
 export class HeaderComponent implements OnInit {
   liveSearch: Personne [];
   isLogged = false;
-  constructor(private cvService: CvService, private loginService: LoginService) { }
+  constructor(private cvService: CvService,
+              private loginService: LoginService,
+              private router: Router) { }
   ngOnInit() {
     this.liveSearch = [];
     this.isLogged = !!localStorage.getItem('token');
@@ -19,14 +22,19 @@ export class HeaderComponent implements OnInit {
   serachPersonnes(name: string) {
     this.cvService.searchPersonnes(name).subscribe(
       (personnes) => {
-        console.log('in search : ');
-        console.log(personnes);
         this.liveSearch = personnes;
       },
       (error) => {
         console.log(error);
       }
     );
+  }
+  goToDetails(id, searchInput) {
+    console.log('here');
+    this.liveSearch = [];
+    searchInput.value = '';
+    const link = ['cv/detail', id];
+    this.router.navigate(link);
   }
 
   logout() {
